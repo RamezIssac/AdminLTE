@@ -11,11 +11,19 @@
     $pagination-active-border-color: $color;
 
     .btn-link,
-    a {
+    a:not(.dropdown-item):not(.btn-app):not(.nav-link):not(.brand-link):not(.page-link) {
       color: $link-color;
 
       @include hover {
         color: $link-hover-color;
+      }
+    }
+
+    .dropdown-item {
+      &:active,
+      &.active {
+        background: $color;
+        color: color-yiq($color);
       }
     }
 
@@ -37,25 +45,48 @@
     .custom-file-input:focus ~ .custom-file-label {
       border-color: lighten($color, 25%);
     }
-
-    [class*="sidebar-light-"],
-    &[class*="sidebar-dark-"] {
-        .nav-sidebar .nav-treeview > .nav-item > {
-        .nav-link:not(.active):hover {
-          color: $color;
-        }
-      }
-    }
     
     .page-item {
+      .page-link {
+        color: $link-color;
+      }
+
+      &.active a,
       &.active .page-link {
         background-color: $pagination-active-bg;
         border-color: $pagination-active-border-color;
+        color: $pagination-active-color;
       }
 
+      &.disabled a,
       &.disabled .page-link {
         background-color: $pagination-disabled-bg;
         border-color: $pagination-disabled-border-color;
+        color: $pagination-disabled-color;
+      }
+    }
+
+    [class*="sidebar-dark-"] {
+      .sidebar {
+        a:not(.dropdown-item):not(.btn-app):not(.nav-link):not(.brand-link) {
+          color: $sidebar-dark-color;
+      
+          @include hover {
+            color: $sidebar-dark-hover-color;
+          }
+        }
+      }
+    }
+
+    [class*="sidebar-light-"] {
+      .sidebar {
+        a:not(.dropdown-item):not(.btn-app):not(.nav-link):not(.brand-link) {
+          color: $sidebar-light-color;
+
+          @include hover {
+            color: $sidebar-light-hover-color;
+          }
+        }
       }
     }
   }
